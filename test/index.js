@@ -66,10 +66,10 @@ async function testModalData() {
 
     const { ModalData } = require('../index.js');
 
-    const modal = new ModalData(params.event);
+    const data = new ModalData(params.event);
 
-    const value1 = modal.get("SAMPLE_CUSTOM_ID1");
-    const value2 = modal.get("SAMPLE_CUSTOM_ID2");
+    const value1 = data.get("SAMPLE_CUSTOM_ID1");
+    const value2 = data.get("SAMPLE_CUSTOM_ID2");
 
     const expected1 = "SAMPLE_VALUE1";
     const expected2 = "SAMPLE_VALUE2";

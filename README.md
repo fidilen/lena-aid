@@ -36,9 +36,9 @@ await lib.discord.interactions.responses.modals.create(json);
 ```js
 const { ModalData } = require('lena-aid');
 
-const modal = new ModalData(context.params.event);
+const data = new ModalData(context.params.event);
 
-const value = modal.get("custom_id"); // custom_id of the target component
+const value = data.get("custom_id"); // custom_id of the target component
 
 console.log(value);
 ```
@@ -47,9 +47,9 @@ console.log(value);
 ```js
 const { CommandData } = require('lena-aid');
 
-const modal = new CommandData(context.params.event);
+const data = new CommandData(context.params.event);
 
-const value = modal.get("option_name"); // name of the target option
+const value = data.get("option_name"); // name of the target option
 
 console.log(value);
 ```
