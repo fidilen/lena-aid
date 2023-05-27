@@ -54,6 +54,13 @@ const value = data.get("option_name"); // name of the target option
 console.log(value);
 ```
 
+### Sleep
+```js
+const { sleep } = require('lena-aid');
+
+await sleep(300);
+```
+
 ## Support
 Feel free to join our [Discord server](https://fidilen.com/discord)!
 

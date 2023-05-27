@@ -168,7 +168,6 @@ function validateCustomIds(rows) {
  * - Utility for retrieving Modal components.
  * - Initialize this class with an interaction event.
  */
-
 class ModalData {
     constructor(event) {
         this.components = event.data.components;
@@ -186,7 +185,6 @@ class ModalData {
  * - Utility for retrieving Chat Input Command options.
  * - Initialize this class with an interaction event.
  */
-
 class CommandData {
     constructor(event) {
         this.options = event.data.options;
@@ -199,4 +197,17 @@ class CommandData {
     }
 }
 
-module.exports = { ModalBuilder, ModalData, CommandData };
+/**
+ * sleep
+ * - asynchronous setTimeOut()
+ * @param {number} ms - milliseconds
+ */
+async function sleep(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, ms || 0);
+    });
+}
+
+module.exports = { ModalBuilder, ModalData, CommandData, sleep };

@@ -4,6 +4,8 @@
     await testModalData();
 
     await testCommandData();
+
+    await testSleep();
 })();
 
 async function testModalBuilder() {
@@ -89,4 +91,16 @@ async function testCommandData() {
     const expected = "TEST OPTION VALUE";
 
     console.log("testCommandData Passed: ", value === expected);
+}
+
+async function testSleep() {
+    const { sleep } = require('../index.js');
+
+    const fromDate = new Date().getTime();
+
+    await sleep(3000);
+
+    const toDate = new Date().getTime();
+
+    console.log('testSleep passed:', 3000 / (toDate - fromDate) <= 1);
 }
