@@ -198,6 +198,37 @@ class CommandData {
 }
 
 /**
+ * GoogleSheets
+ * - Utility for Autocode lib Google Sheets API.
+ * - Initialize this class with lib.googlesheets.
+ */
+class GoogleSheets {
+    constructor(googlesheets) {
+        this.googlesheets = googlesheets;
+    }
+
+    async updateOrInsert(params) {
+        const existingRecord = await this.googlesheets.query.select(params)
+            .then(result => { return result?.rows?.map(row => { return row.fields }) || [] });
+
+        if (existingRecord.length > 0) {
+            await this.googlesheets.query.update({
+                range: params.range,
+                bounds: params.bounds,
+                where: params.where,
+                fields: params.fields,
+            });
+        } else {
+            await this.googlesheets.query.insert({
+                range: params.range,
+                bounds: params.bounds,
+                fieldsets: [params.fields],
+            });
+        }
+    }
+}
+
+/**
  * sleep
  * - asynchronous setTimeOut()
  * @param {number} ms - milliseconds
@@ -210,4 +241,4 @@ async function sleep(ms) {
     });
 }
 
-module.exports = { ModalBuilder, ModalData, CommandData, sleep };
+module.exports = { ModalBuilder, ModalData, CommandData, GoogleSheets, sleep };

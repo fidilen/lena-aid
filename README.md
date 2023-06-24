@@ -61,6 +61,29 @@ const { sleep } = require('lena-aid');
 await sleep(300);
 ```
 
+### GoogleSheets
+```js
+const lib = require('lib')({token: process.env.STDLIB_SECRET_TOKEN});   // Autocode lib
+const { GoogleSheets } = require('lena-aid');
+
+const googlesheets = new GoogleSheets(lib.googlesheets);
+
+await googlesheets.insertOrUpdate({
+  range: `A:B`,
+  bounds: 'FULL_RANGE',
+  where: [
+    {
+      'column1__is': `value1`
+    }
+  ],
+  fields: {
+        'column1': `value1`,
+        'column2': `value2`,
+        'column3': `value3`
+    }
+});
+```
+
 ## Support
 Feel free to join our [Discord server](https://fidilen.com/discord)!
 
